@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Paula 🎂❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #ff7eb3, #ff758c, #7c5cff, #4facfe);
+    background-size: 400% 400%;
+    animation: fondo 12s ease infinite;
+    color: white;
+    overflow-x: hidden;
+}
+
+@keyframes fondo {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.screen {
+    min-height: 100vh;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    text-align: center;
+    position: relative;
+}
+
+.screen.active {
+    display: flex;
+}
+
+.card {
+    width: 100%;
+    max-width: 600px;
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 30px;
+    padding: 35px 25px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+
+h1 {
+    font-size: clamp(32px, 8vw, 55px);
+    margin: 10px 0 20px;
+}
+
+h2 {
+    font-size: clamp(25px, 6vw, 40px);
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+button {
+    border: none;
+    border-radius: 50px;
+    padding: 15px 28px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px;
+    color: #ff4f87;
+    background: white;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: transform .2s;
+}
+
+button:active {
+    transform: scale(.94);
+}
+
+.sorpresa {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+}
+
+#count {
+    font-size: 100px;
+    font-weight: 900;
+    text-shadow: 0 5px 20px rgba(0,0,0,.3);
+}
+
+.photos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.photos img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.25);
+}
+
+.message {
+    text-align: left;
+    background: rgba(255,255,255,.12);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.floating {
+    position: fixed;
+    pointer-events: none;
+    z-index: 999;
+    animation: subir linear forwards;
+}
+
+@keyframes subir {
+    from {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-120vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.choice-area {
+    position: relative;
+    height: 180px;
+}
+
+#noBtn {
+    position: absolute;
+    transition: all .2s ease;
+}
+
+.finalText {
+    font-size: clamp(25px, 6vw, 38px);
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+.small {
+    opacity: .9;
+    font-size: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PARTE 1 -->
+<section class="screen active" id="screen1">
+    <div class="card">
+        <div style="font-size:70px;">🎁</div>
+
+        <h1>Tengo una sorpresa para ti</h1>
+
+        <h2>🇨🇿 Mám pro tebe překvapení</h2>
+
+        <p>Pero primero tienes que descubrirla...</p>
+
+        <button class="sorpresa" onclick="startCountdown()">
+            🎀 Sorpresa
+        </button>
+    </div>
+</section>
+
+
+<!-- PARTE 2 -->
+<section class="screen" id="screen2">
+    <div class="card">
+        <div style="font-size:50px;">🎂✨</div>
+        <h2>Prepárate...</h2>
+        <div id="count">5</div>
+        <p>Algo viene 👀</p>
+    </div>
+</section>
+
+
+<!-- PARTE 3 -->
+<section class="screen" id="screen3">
+    <div class="card">
+        <h1>📸 Algunos recuerdos</h1>
+
+        <div class="photos">
+            <img src="foto1.jpg">
+            <img src="foto2.jpg">
+            <img src="foto3.jpg">
+            <img src="foto4.jpg">
+            <img src="foto5.jpg">
+            <img src="foto6.jpg">
+        </div>
+
+        <button onclick="next(4)">Continuar ❤️</button>
+    </div>
+</section>
+
+
+<!-- PARTE 4 -->
+<section class="screen" id="screen4">
+    <div class="card">
+        <h1>💌 Feliz cumple Pau</h1>
+
+        <div class="message">
+            <p>
+                feliz cumple Pau, te deseo lo mejor para este día y que la pases bomba, ojalá sigas siendo la misma la cual conocí ya hace 4 años, feliz, divertida, atenta. De vdd que cualquier persona que pueda tenerte en tu círculo ya sea de familia, pareja y amigo, es una persona muy afortunada, no siempre existen personas como vos, ojalá nunca cambies y podamos seguir llevándonos como cualquier forma de las q te mencioné ( ojalá la segunda 😜) te quiero demasiado❤️!!
+            </p>
+        </div>
+
+        <button onclick="next(5)">Seguir 🎀</button>
+    </div>
+</section>
+
+
+<!-- PARTE 8 -->
+<section class="screen" id="screen5">
+    <div class="card">
+        <div style="font-size:70px;">🎁</div>
+
+        <h1>Una cosita más...</h1>
+
+        <p>
+            Te tengo un regalo, pero se lo tengo que dar en persona.
+            Un día de estos te lo doy.
+        </p>
+
+        <button onclick="next(6)">Abrir 💝</button>
+    </div>
+</section>
+
+
+<!-- PARTE 9 -->
+<section class="screen" id="screen6">
+    <div class="card">
+        <h1>¿Seguimos? 👀</h1>
+
+        <p>Solo hay una respuesta correcta...</p>
+
+        <div class="choice-area">
+            <button onclick="next(7)">Siguiente</button>
+
+            <button id="noBtn" onclick="wrongAnswer()">
+                No quiero seguir
+            </button>
+        </div>
+    </div>
+</section>
+
+
+<!-- PARTE 9 RESPUESTA -->
+<section class="screen" id="screen7">
+    <div class="card">
+        <div style="font-size:80px;">😌</div>
+
+        <h1>no mienta yo se que si</h1>
+
+        <button onclick="next(8)">Siguiente</button>
+    </div>
+</section>
+
+
+<!-- PARTE 11 -->
+<section class="screen" id="screen8">
+    <div class="card">
+
+        <div style="font-size:70px;">🥹🎂</div>
+
+        <p class="finalText">
+            espero que seguir pidiendo festejar más cumpleaños con tigo hasta q esta imagen se haga realidad
+        </p>
+
+        <button onclick="next(9)">❤️</button>
+    </div>
+</section>
+
+
+<!-- PARTE 12 -->
+<section class="screen" id="screen9">
+    <div class="card">
+
+        <div style="font-size:90px;">🎂🎉❤️</div>
+
+        <h1 class="finalText">
+            feliz cumple años ❤️!!
+        </h1>
+
+        <p>🥳🎈✨</p>
+    </div>
+</section>
+
+
+<script>
+
+function next(number) {
+    document.querySelectorAll(".screen").forEach(s => {
+        s.classList.remove("active");
+    });
+
+    document.getElementById("screen" + number).classList.add("active");
+}
+
+function startCountdown() {
+
+    const music = document.getElementById("music");
+
+    music.play().catch(() => {});
+
+    next(2);
+
+    let number = 5;
+    const count = document.getElementById("count");
+
+    const timer = setInterval(() => {
+
+        number--;
+
+        if (number > 0) {
+            count.textContent = number;
+        }
+
+        if (number === 0) {
+            clearInterval(timer);
+
+            count.textContent = "🎉";
+
+            setTimeout(() => {
+                next(3);
+            }, 900);
+        }
+
+    }, 1000);
+
+    createEffects();
+}
+
+
+function createEffects() {
+
+    const emojis = [
+        "❤️","💖","💕","💗","💓",
+        "🎈","🎉","✨","🥳",
+        "🎂","💝","🌸","⭐","😜","😝"
+    ];
+
+    setInterval(() => {
+
+        const element = document.createElement("div");
+
+        element.className = "floating";
+
+        element.textContent =
+            emojis[Math.floor(Math.random() * emojis.length)];
+
+        element.style.left =
+            Math.random() * 100 + "vw";
+
+        element.style.fontSize =
+            (20 + Math.random() * 30) + "px";
+
+        element.style.animationDuration =
+            (4 + Math.random() * 5) + "s";
+
+        document.body.appendChild(element);
+
+        setTimeout(() => {
+            element.remove();
+        }, 9000);
+
+    }, 350);
+}
+
+
+function wrongAnswer() {
+
+    const button = document.getElementById("noBtn");
+
+    const area = document.querySelector(".choice-area");
+
+    const maxX = area.clientWidth - button.offsetWidth;
+    const maxY = area.clientHeight - button.offsetHeight;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    button.style.left = x + "px";
+    button.style.top = y + "px";
+}
+
+</script>
+
+</body>
+</html>
