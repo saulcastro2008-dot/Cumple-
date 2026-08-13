@@ -156,6 +156,14 @@ button:active {
     line-height: 1.5;
 }
 
+.finalPhoto {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
 .small {
     opacity: .9;
     font-size: 15px;
@@ -190,7 +198,7 @@ button:active {
 <section class="screen" id="screen2">
     <div class="card">
 
-        <h2>Prepárate...</h2>
+        <h2>se viene</h2>
 
         <div id="count">5</div>
 
@@ -205,7 +213,7 @@ button:active {
         <h1>🎉🎉🥳🥳🥳</h1>
 
         <div class="photos">
-            <img src="foto1.jpg">
+            <img src="foto1.jpg" onerror="this.style.display='none';">
             <img src="foto2.jpg">
             <img src="foto3.jpg">
             <img src="foto4.jpg">
@@ -257,7 +265,7 @@ button:active {
 
         <h1>todavia falta victoria</h1>
 
-        <p>Solo hay una respuesta correcta...</p>
+        <p>jejejejej</p>
 
         <div class="choice-area">
             <button onclick="next(7)">Siguiente</button>
@@ -297,6 +305,8 @@ button:active {
 <!-- PARTE 12 -->
 <section class="screen" id="screen9">
     <div class="card">
+
+        <img src="foto7.jpg" class="finalPhoto">
 
         <h1 class="finalText">
             feliz cumple años
