@@ -156,17 +156,18 @@ button:active {
     line-height: 1.5;
 }
 
-.finalPhoto {
-    width: 100%;
-    max-width: 500px;
-    border-radius: 25px;
-    margin-bottom: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.25);
-}
-
 .small {
     opacity: .9;
     font-size: 15px;
+}
+
+.familyPhoto {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-top: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.25);
 }
 </style>
 </head>
@@ -190,6 +191,7 @@ button:active {
         <button class="sorpresa" onclick="startCountdown()">
             Sorpresa
         </button>
+
     </div>
 </section>
 
@@ -198,7 +200,7 @@ button:active {
 <section class="screen" id="screen2">
     <div class="card">
 
-        <h2>se viene</h2>
+        <h2>se viene😜🥳🎉🎉😜🔥👺</h2>
 
         <div id="count">5</div>
 
@@ -213,15 +215,16 @@ button:active {
         <h1>🎉🎉🥳🥳🥳</h1>
 
         <div class="photos">
-            <img src="foto1.jpg" onerror="this.style.display='none';">
-            <img src="foto2.jpg">
-            <img src="foto3.jpg">
-            <img src="foto4.jpg">
-            <img src="foto5.jpg">
-            <img src="foto6.jpg">
+            <img src="foto1.jpg?v=2">
+            <img src="foto2.jpg?v=2">
+            <img src="foto3.jpg?v=2">
+            <img src="foto4.jpg?v=2">
+            <img src="foto5.jpg?v=2">
+            <img src="foto6.jpg?v=2">
         </div>
 
         <button onclick="next(4)">Continuar</button>
+
     </div>
 </section>
 
@@ -239,11 +242,12 @@ button:active {
         </div>
 
         <button onclick="next(5)">Seguir</button>
+
     </div>
 </section>
 
 
-<!-- PARTE 8 -->
+<!-- PARTE 5 -->
 <section class="screen" id="screen5">
     <div class="card">
 
@@ -255,41 +259,46 @@ button:active {
         </p>
 
         <button onclick="next(6)">Abrir</button>
+
     </div>
 </section>
 
 
-<!-- PARTE 9 -->
+<!-- PARTE 6 -->
 <section class="screen" id="screen6">
     <div class="card">
 
         <h1>todavia falta victoria</h1>
 
-        <p>jejejejej</p>
+        <p>Solo hay una respuesta correcta...</p>
 
         <div class="choice-area">
+
             <button onclick="next(7)">Siguiente</button>
 
             <button id="noBtn" onclick="wrongAnswer()">
                 No quiero seguir
             </button>
+
         </div>
+
     </div>
 </section>
 
 
-<!-- PARTE 9 RESPUESTA -->
+<!-- PARTE 7 -->
 <section class="screen" id="screen7">
     <div class="card">
 
         <h1>no mienta yo se que si</h1>
 
         <button onclick="next(8)">Siguiente</button>
+
     </div>
 </section>
 
 
-<!-- PARTE 11 -->
+<!-- PARTE 8 - PENÚLTIMA -->
 <section class="screen" id="screen8">
     <div class="card">
 
@@ -297,16 +306,21 @@ button:active {
             espero que seguir pidiendo festejar más cumpleaños con tigo hasta q esta imagen se haga realidad
         </p>
 
+        <img
+            src="foto7.jpg?v=2"
+            class="familyPhoto"
+            alt="Foto familiar"
+        >
+
         <button onclick="next(9)">Siguiente</button>
+
     </div>
 </section>
 
 
-<!-- PARTE 12 -->
+<!-- PARTE 9 - FINAL -->
 <section class="screen" id="screen9">
     <div class="card">
-
-        <img src="foto7.jpg" class="finalPhoto">
 
         <h1 class="finalText">
             feliz cumple años
@@ -319,12 +333,14 @@ button:active {
 <script>
 
 function next(number) {
+
     document.querySelectorAll(".screen").forEach(s => {
         s.classList.remove("active");
     });
 
     document.getElementById("screen" + number).classList.add("active");
 }
+
 
 function startCountdown() {
 
@@ -335,6 +351,7 @@ function startCountdown() {
     next(2);
 
     let number = 5;
+
     const count = document.getElementById("count");
 
     const timer = setInterval(() => {
@@ -346,6 +363,7 @@ function startCountdown() {
         }
 
         if (number === 0) {
+
             clearInterval(timer);
 
             count.textContent = "🎉";
@@ -353,6 +371,7 @@ function startCountdown() {
             setTimeout(() => {
                 next(3);
             }, 900);
+
         }
 
     }, 1000);
@@ -364,9 +383,21 @@ function startCountdown() {
 function createEffects() {
 
     const emojis = [
-        "❤️","💖","💕","💗","💓",
-        "🎈","🎉","✨","🥳",
-        "🎂","💝","🌸","⭐","😜","😝"
+        "❤️",
+        "💖",
+        "💕",
+        "💗",
+        "💓",
+        "🎈",
+        "🎉",
+        "✨",
+        "🥳",
+        "🎂",
+        "💝",
+        "🌸",
+        "⭐",
+        "😜",
+        "😝"
     ];
 
     setInterval(() => {
@@ -403,11 +434,17 @@ function wrongAnswer() {
 
     const area = document.querySelector(".choice-area");
 
-    const maxX = area.clientWidth - button.offsetWidth;
-    const maxY = area.clientHeight - button.offsetHeight;
+    const maxX =
+        area.clientWidth - button.offsetWidth;
 
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
+    const maxY =
+        area.clientHeight - button.offsetHeight;
+
+    const x =
+        Math.random() * maxX;
+
+    const y =
+        Math.random() * maxY;
 
     button.style.left = x + "px";
     button.style.top = y + "px";
